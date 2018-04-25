@@ -11,7 +11,12 @@
 //iteratee is a function that must return something, capture whatever it returns in a variable
 //add the returned value from iteratee tp myNewArray
 //after looping, return  myNewArray
-function map(array, iteratee){
+const map = (array, iteratee) => {
+    const newArr = [];
+    array.forEach((item)=>{
+        newArr.push(iteratee(item))
+    });
+    return newArr;
 
 }
 
@@ -24,7 +29,14 @@ function map(array, iteratee){
 //     passing in the item from the current loop
 //iteratee will return true or false, if true add the item to myNewArray else do not
 //after looping, return myNewArray
-function filter(array, iteratee){
+const filter= (array, iteratee) => {
+    const newArr = [];
+    array.forEach((item)=>{
+        if (iteratee(array[item])){
+             
+        }
+    });
+    return newArr;
 
 }
 
@@ -34,35 +46,46 @@ function filter(array, iteratee){
 //     passing in the item from the current loop
 //fnc will return true or false, if true return the item 
 //after looping, return null
-function find(theArray, fnc){
-
+const find = (arr, fnc) => {
+    for (let x = 0; x < arr.length; x++){
+        if (fnc(arr[x])){
+            return(arr[x])
+        }
+    }   
+    return null; 
 }
 
 
 //return the last item in theArray
-function findLast(theArray){
-
+const findLast = (arr) => {
+    return arr[arr.length-1]
 }
 
 //return the first element of the array
-function head(theArray){
-
+const head = (arr) => {
+    return arr[0]
 }
 
 //create a new array
 //loop theArray in reverse order
 //add the item from each loop to the new array
 //return the new array
-function reverse(theArray){
-
+const reverse = (arr) => {
+    const newArr = [];
+    for(let x = arr.length-1; x >= 0; x--){
+      newArr.push(arr[x])
+    } return newArr;
 }
 
 //create a new array
 //loop theArray
 //add the item from each loop to the new array except the first item
 //return the new array
-function tail(theArray){
-
+const tail = (arr) => {
+    const newArr = [];
+    for(let x = 1; x < arr.length; x++) {
+        newArr.push(arr[x])
+    } return newArr;
 }
 
 //implement the most basic sorting algorithm there is
@@ -75,7 +98,19 @@ function tail(theArray){
 //if a swap is done set it to true
 //after each for loop check the variable, if true, continue the while loop
 //if false return theArray
-function sort(theArray){
+const sort = (arr) => {
+    let swapped = true;
+    while(!swapped) {
+        swapped = true;
+            for (let x = 0; x < arr.length-1; x++) {
+                if (arr[x] > arr [x+1]) {
+                    let holdValue = arr[x+1];
+                    arr[x] = arr[x+1];
+                    arr[x+1] = holdValue;
+                    swapped = false;
+                }
+        }
+    } return arr;
 
 }
 
